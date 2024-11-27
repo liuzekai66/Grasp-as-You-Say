@@ -1,0 +1,31 @@
+set: "test"
+data:
+  test:
+    data_root: "./data/oakink"
+    pose_path: "./data/dexgys/test_with_guide_v2.1.json"
+    num_rotation_aug: 1
+    num_equivalent_aug: 1
+    sample_in_pose: False
+    guidence_type: "fine"
+    rotation_type: "euler"
+    norm_type: "minmax11"
+    batch_size: 128
+    num_workers: 8
+
+hand_model:
+  mjcf_path: ./data/mjcf/shadow_hand.xml
+  mesh_path: ./data/mjcf/meshes
+  n_surface_points: 1024
+  contact_points_path: ./data/mjcf/contact_points.json
+  penetration_points_path: ./data/mjcf/penetration_points.json
+model:
+  checkpoint_path: None
+
+q1:
+  lambda_torque: 10
+  m: 8
+  mu: 1
+  nms: true
+  thres_contact: 0.01
+  thres_pen: 0.005
+  thres_tpen: 0.01

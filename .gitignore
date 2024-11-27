@@ -1,0 +1,14 @@
+#pretrained weight
+pretrained/
+
+# cache
+**/__pycache__/
+
+# vscode
+.vscode/
+
+# exp
+Experiments/
+
+# datasets
+data

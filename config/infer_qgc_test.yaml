@@ -1,0 +1,29 @@
+set: "test"
+data:
+  test:
+    data_root: ./data/oakink
+    pose_path: ./Experiments/idgc/test_results/epoch_1_test/matched_results.json
+    sample_in_pose: true
+    guidence_type: fine
+    rotation_type: euler
+    norm_type: minmax11
+    batch_size: 16
+    num_workers: 4
+
+hand_model:
+  mjcf_path: ./data/mjcf/shadow_hand.xml
+  mesh_path: ./data/mjcf/meshes
+  n_surface_points: 1024
+  contact_points_path: ./data/mjcf/contact_points.json
+  penetration_points_path: ./data/mjcf/penetration_points.json
+model:
+  checkpoint_path: None
+
+q1:
+  lambda_torque: 10
+  m: 8
+  mu: 1
+  nms: true
+  thres_contact: 0.01
+  thres_pen: 0.005
+  thres_tpen: 0.01
