@@ -120,9 +120,16 @@ python ./test.py \
 - [x] Release the training code of GraspGYS framework
 - [x] Release the inference code of GraspGYS framework
 
+## Acknowledgements
+
+The code of this repository is based on the following repositories. We would like to thank the authors for sharing their works.
+
+- [UniDexGrasp](https://github.com/PKU-EPIC/UniDexGrasp)
+
+- [Scene-Diffuser](https://github.com/scenediffuser/Scene-Diffuser)
+
 ## Contact
 - Email: weiylin5@mail2.sysu.edu.cn
-
 
 ## Citation
 Please cite it if you find this work useful.
