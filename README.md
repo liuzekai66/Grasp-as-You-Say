@@ -4,7 +4,7 @@
 
 #### <p align="center">[[Paper]](https://arxiv.org/abs/2405.19291) &nbsp;&nbsp;&nbsp; [[Project]](https://isee-laboratory.github.io/DexGYS/) </p>
 
-
+![-](assets/realword_vis.png)
 ### (NeurIPS 2024) Official repository of paper "Grasp as You Say: Language-guided Dexterous Grasp Generation" 
 
 
