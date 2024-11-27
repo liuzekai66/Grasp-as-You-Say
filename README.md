@@ -1,6 +1,6 @@
 # <p align="center">Grasp as You Say: Language-guided Dexterous Grasp Generation</p>
 
-### <p align="center">*Yi-Lin Wei, Jian-Jian Jiang, Chengyi Xing, Xiantuo Tan, Xiao-Ming Wu, Hao Li, Mark Cutkosky, Wei-Shi Zheng*</p>
+### <p align="center">*Yi-Lin Wei, Jian-Jian Jiang, Chengyi Xing, Xiantuo Tan, Xiao-Ming Wu, Hao Li, <br> Mark Cutkosky, Wei-Shi Zheng*</p>
 
 #### <p align="center">[[Paper]](https://arxiv.org/abs/2405.19291) &nbsp;&nbsp;&nbsp; [[Project]](https://isee-laboratory.github.io/DexGYS/) </p>
 
