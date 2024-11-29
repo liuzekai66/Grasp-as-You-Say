@@ -128,6 +128,8 @@ The code of this repository is based on the following repositories. We would lik
 
 - [Scene-Diffuser](https://github.com/scenediffuser/Scene-Diffuser)
 
+- [DGTR](https://github.com/iSEE-Laboratory/DGTR)
+
 ## Contact
 - Email: weiylin5@mail2.sysu.edu.cn
 
