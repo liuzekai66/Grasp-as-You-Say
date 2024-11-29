@@ -134,10 +134,10 @@ The code of this repository is based on the following repositories. We would lik
 ## Citation
 Please cite it if you find this work useful.
 ```
-@inproceedings{wei2024grasp,
-  title = {Grasp as You Say: Language-guided Dexterous Grasp Generation},
-  author = {Yi-Lin Wei and Jian-Jian Jiang and Chengyi Xing and Xian-Tuo Tan and Xiao-Ming Wu and Hao Li and Mark Cutkosky and Wei-Shi Zheng},
-  booktitle = {Advances in Neural Information Processing Systems},
-  year = {2024}
+@article{wei2024grasp,
+  title={Grasp as you say: language-guided dexterous grasp generation},
+  author={Wei, Yi-Lin and Jiang, Jian-Jian and Xing, Chengyi and Tan, Xian-Tuo and Wu, Xiao-Ming and Li, Hao and Cutkosky, Mark and Zheng, Wei-Shi},
+  journal={arXiv preprint arXiv:2405.19291},
+  year={2024}
 }
 ```
