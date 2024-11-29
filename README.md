@@ -38,19 +38,19 @@ cd ../../
 ## Data Preparation
 1. Download dexterous grap label and language label of DexGYS from here ["coming soon"], and put in the "dexgys" in the path of "./data".
 
-2. Download ShadowHand model mjcf from here[https://mirrors.pku.edu.cn/dl-release/UniDexGrasp_CVPR2023/], and put the "mjcf" in the path of "./data".
+2. Download ShadowHand model mjcf from [here](https://mirrors.pku.edu.cn/dl-release/UniDexGrasp_CVPR2023/), and put the "mjcf" in the path of "./data".
 
-3. Download 3D mesh of object from here[https://oakink.net/], and put the "oakink" in the path of "./data".
+3. Download 3D mesh of object from [here](https://oakink.net/), and put the "oakink" in the path of "./data".
 
 4. Finally, the directory should as follow:
 ```
 .data/
-├── dexgys 
+├── dexgys/ 
 │ ├── train_with_guide_v2.1.json
-│ ├── test_with_guide_v2.1.json
-├── mjcf  
-├── oakink 
-│ ├── shape
+│ ├── test_with_guide_v2.1.json 
+├── oakink/ 
+│ ├── shape/
+└── mjcf/
 ```
 
 ## Usage
