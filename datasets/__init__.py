@@ -15,7 +15,7 @@ def build_datasets(data_cfg) -> Tuple[Dataset, Dataset, Optional[Dataset]]:
                         rotation_type=data_cfg.train.rotation_type,
                         sample_in_pose = data_cfg.train.sample_in_pose,
                         norm_type=data_cfg.train.norm_type,
-                        guidence_type=data_cfg.train.guidence_type,
+                        guidance_type=data_cfg.train.guidance_type,
                         is_train=True,
                 )
             val_set = TaskDataset_Pose(
@@ -24,7 +24,7 @@ def build_datasets(data_cfg) -> Tuple[Dataset, Dataset, Optional[Dataset]]:
                         rotation_type=data_cfg.val.rotation_type,
                         sample_in_pose = data_cfg.val.sample_in_pose,
                         norm_type=data_cfg.val.norm_type,
-                        guidence_type=data_cfg.val.guidence_type,
+                        guidance_type=data_cfg.val.guidance_type,
                         is_train=False,
             )
             test_set = None
@@ -37,7 +37,7 @@ def build_datasets(data_cfg) -> Tuple[Dataset, Dataset, Optional[Dataset]]:
                         rotation_type=data_cfg.test.rotation_type,
                         sample_in_pose = data_cfg.test.sample_in_pose,
                         norm_type=data_cfg.test.norm_type,
-                        guidence_type=data_cfg.test.guidence_type,
+                        guidance_type=data_cfg.test.guidance_type,
                         is_train=False,
             )
 
@@ -52,7 +52,7 @@ def build_datasets(data_cfg) -> Tuple[Dataset, Dataset, Optional[Dataset]]:
                         rotation_type=data_cfg.train.rotation_type,
                         sample_in_pose = data_cfg.train.sample_in_pose,
                         norm_type=data_cfg.train.norm_type,
-                        guidence_type=data_cfg.train.guidence_type,
+                        guidance_type=data_cfg.train.guidance_type,
                         is_train=True,
                 )
             val_set = RefineDataset(
@@ -61,7 +61,7 @@ def build_datasets(data_cfg) -> Tuple[Dataset, Dataset, Optional[Dataset]]:
                         rotation_type=data_cfg.val.rotation_type,
                         sample_in_pose = data_cfg.val.sample_in_pose,
                         norm_type=data_cfg.val.norm_type,
-                        guidence_type=data_cfg.val.guidence_type,
+                        guidance_type=data_cfg.val.guidance_type,
                         is_train=False,
             )
             test_set = None
@@ -74,7 +74,7 @@ def build_datasets(data_cfg) -> Tuple[Dataset, Dataset, Optional[Dataset]]:
                         rotation_type=data_cfg.test.rotation_type,
                         sample_in_pose = data_cfg.test.sample_in_pose,
                         norm_type=data_cfg.test.norm_type,
-                        guidence_type=data_cfg.test.guidence_type,
+                        guidance_type=data_cfg.test.guidance_type,
                         is_train=False,
             )
         return train_set, val_set, test_set

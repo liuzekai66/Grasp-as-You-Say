@@ -141,7 +141,7 @@ class RefineDataset(DgnBase):
         num_equivalent_aug=1,
         sample_in_pose=True,
         norm_type="minmax11",
-        guidence_type="simple",
+        guidance_type="simple",
         rotation_type="quaternion"
     ) -> None:
         super().__init__(rotation_type=rotation_type, norm_type=norm_type)
@@ -153,7 +153,7 @@ class RefineDataset(DgnBase):
         self.rotation_type = rotation_type
         self.num_equivalent_aug = num_equivalent_aug
         self.sample_in_pose = sample_in_pose
-        self.guidence_type = guidence_type
+        self.guidance_type = guidance_type
         self._process_data(sample_in_pose)
 
     def _process_data(self, sample_in_pose):
@@ -172,7 +172,7 @@ class RefineDataset(DgnBase):
         data = self.data[index]
         cate_id = data["cate_id"]
         obj_id = data["obj_id"]
-        guidence = data["guidence"]
+        guidance = data["guidance"]
         
         obj_pc = self._get_obj_pc(obj_id)
 
@@ -202,9 +202,8 @@ class RefineDataset(DgnBase):
         sample = {
             "obj_id": obj_id,
             "cate_id": data["cate_id"],
-            "guidence": data["guidence"],
+            "guidance": data["guidance"],
             "obj_pc": obj_pc,  # shape: (N, 3)
-            "seq_id": data["seq_id"] if "seq_id" in data else str(index),
             "intend_id": data["action_id"],
             "coarse_norm_pose": coarse_norm_pose,  
             "coarse_pose": coarse_pose,  

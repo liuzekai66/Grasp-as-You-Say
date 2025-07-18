@@ -5,24 +5,24 @@ rotation_dim: &rotation_dim 3
 ncols: 120
 epochs: &epochs 200
 print_freq: 500
-validate_freq: 1
+validate_freq: 5
 save_root: ./Experiments/idgc
 save_top_n: 20
 log_dir: logs
 seed: 3407
 norm_type: &norm_type minmax11
-guidence_type: &guidence_type "fine" # fine
+guidance_type: &guidance_type "fine" # fine
 frozen_clip: True
 
 data:
   name: task_pose
   train:
     data_root: &data_root "./data/oakink"
-    pose_path: "./data/dexgys/train_with_guide_v2.1.json"
+    pose_path: "./data/dexgys/train.json"
     num_rotation_aug: &num_rotation_aug 1
     num_equivalent_aug: &num_equivalent_aug 1
     sample_in_pose: &sample_in_pose True
-    guidence_type: *guidence_type
+    guidance_type: *guidance_type
     rotation_type: *rotation_type
     norm_type: *norm_type 
     batch_size: 48
@@ -30,10 +30,10 @@ data:
 
   val:
     data_root: *data_root
-    pose_path: "./data/dexgys/test_with_guide_v2.1.json"
+    pose_path: "./data/dexgys/test.json"
     num_rotation_aug: 1
     sample_in_pose: False
-    guidence_type: *guidence_type
+    guidance_type: *guidance_type
     rotation_type: *rotation_type
     norm_type: *norm_type 
     batch_size: 48
@@ -55,7 +55,7 @@ model:
 
   decoder:
     name: unet
-    use_guidence: True
+    use_guidance: True
     use_obj: True
     plus_condition_type: ("")
     trans_condition_type: "txt_obj"
@@ -112,10 +112,14 @@ model:
       contact_points_path: ./data/mjcf/contact_points.json
       penetration_points_path: ./data/mjcf/penetration_points.json
       fingertip_points_path: ./data/mjcf/fingertip.json
+    # loss_weights:
+    #   hand_chamfer: 1.0
+    #   para: 10.0
+    #   obj_penetration: 50.0
+    #   self_penetration: 10.0
     loss_weights:
       hand_chamfer: 1.0
       para: 10.0
-      obj_penetration: 50.0
       self_penetration: 10.0
 
     cost_weights:

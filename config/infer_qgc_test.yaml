@@ -4,7 +4,7 @@ data:
     data_root: ./data/oakink
     pose_path: ./Experiments/idgc/test_results/epoch_1_test/matched_results.json
     sample_in_pose: true
-    guidence_type: fine
+    guidance_type: fine
     rotation_type: euler
     norm_type: minmax11
     batch_size: 16

@@ -2,11 +2,11 @@ set: "test"
 data:
   test:
     data_root: "./data/oakink"
-    pose_path: "./data/dexgys/test_with_guide_v2.1.json"
+    pose_path: "./data/dexgys/test.json"
     num_rotation_aug: 1
     num_equivalent_aug: 1
     sample_in_pose: False
-    guidence_type: "fine"
+    guidance_type: "fine"
     rotation_type: "euler"
     norm_type: "minmax11"
     batch_size: 128
