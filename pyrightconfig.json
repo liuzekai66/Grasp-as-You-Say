@@ -1,0 +1,3 @@
+{
+    "exclude": ["Experiments", "data", "point_e_model_cache"]
+}

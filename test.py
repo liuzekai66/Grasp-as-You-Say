@@ -188,17 +188,16 @@ class Tester(object):
             for i in range(raw_predictions.shape[0]):
                 raw_results.append({
                     "obj_id": data["obj_id"][i],
+                    "cate_id": data["cate_id"][i],
                     "action_id": data["intend_id"][i],
-                    "seq_id": data["seq_id"][i],
-                    "guidence": data["guidence"][i],
+                    "guidance": data["guidance"][i],
                     "predictions": raw_predictions[i].cpu().numpy().tolist(),
                 })
                 matched_results.append({
                     "cate_id": data["cate_id"][i],
                     "obj_id": data["obj_id"][i],
-                    "seq_id": data["seq_id"][i],
                     "action_id": data["intend_id"][i],
-                    "guidence": data["guidence"][i],
+                    "guidance": data["guidance"][i],
                     "predictions": matched_predictions[i].cpu().numpy().tolist(),
                     "targets": matched_targets[i].cpu().numpy().tolist(),
                 })
@@ -206,20 +205,19 @@ class Tester(object):
 
     def process_out(self, raw_results):
         from collections import defaultdict
-        merged_results = defaultdict(lambda: {"seq_ids": [], "predictions": []})
+        merged_results = defaultdict(lambda: {"predictions": []})
 
         for result in raw_results:
-            key = (result["obj_id"], result["action_id"], result["guidence"])
-            merged_results[key]["seq_ids"].append(result["seq_id"])
+            key = (result["obj_id"], result["cate_id"], result["action_id"], result["guidance"])
             merged_results[key]["predictions"].append(result["predictions"])
 
         final_results = []
-        for (obj_id, action_id, guidence), data in merged_results.items():
+        for (obj_id, cate_id, action_id, guidance), data in merged_results.items():
             final_results.append({
                     "obj_id": obj_id,
+                    "cate_id": cate_id,
                     "action_id": action_id,
-                    "guidence": guidence,
-                    "seq_ids": data["seq_ids"],
+                    "guidance": guidance,
                     "predictions": data["predictions"],
                     
             })
@@ -253,10 +251,10 @@ class Tester(object):
             json.dump(matched_results, wf, indent=4)
         logging.info(f'Matched results have been saved to {matched_results_path}')
 
-        print("-" * 120)
-        print("You can evaluate them by running:")
-        print(f"\"python ./evaluation/eval_quality.py -r {raw_results_path} --gpus 0 1 2 3 4 5 6 7 --partial_scales --num_scales 1\"")
-        print("-" * 120)
+        # print("-" * 120)
+        # print("You can evaluate them by running:")
+        # print(f"\"python ./evaluation/eval_quality.py -r {raw_results_path} --gpus 0 1 2 3 4 5 6 7 --partial_scales --num_scales 1\"")
+        # print("-" * 120)
 
 
 def load_cfg():

@@ -142,7 +142,7 @@ class TaskDataset_Pose(DgnBase):
         is_train=True,
         sample_in_pose=True,
         norm_type="minmax11",
-        guidence_type="simple",
+        guidance_type="simple",
         rotation_type="quaternion"
     ) -> None:
         super().__init__(rotation_type=rotation_type, norm_type=norm_type)
@@ -152,7 +152,7 @@ class TaskDataset_Pose(DgnBase):
         self.is_train = is_train
         self.rotation_type = rotation_type
         self.sample_in_pose = sample_in_pose
-        self.guidence_type = guidence_type
+        self.guidance_type = guidance_type
         self._process_data(sample_in_pose)
 
     def _process_data(self, sample_in_pose):
@@ -169,16 +169,16 @@ class TaskDataset_Pose(DgnBase):
                 obj_code = str(all_data[i]['cate_id']) + str(all_data[i]['obj_id']) + str(all_data[i]['action_id']) 
                 if obj_code in obj_dict:
                     obj_dict[obj_code]['dex_grasp'].append(all_data[i]['dex_grasp'])
-                    obj_dict[obj_code]['guidence'].append(all_data[i]['guidence'])
+                    obj_dict[obj_code]['guidance'].append(all_data[i]['guidance'])
                 else:
                     obj_dict[obj_code] = all_data[i]
                     obj_dict[obj_code]['dex_grasp'] = [obj_dict[obj_code]['dex_grasp']]
-                    obj_dict[obj_code]['guidence'] = [obj_dict[obj_code]['guidence']]
+                    obj_dict[obj_code]['guidance'] = [obj_dict[obj_code]['guidance']]
 
             for obj_code in obj_dict:
-                for i in range(len(obj_dict[obj_code]['guidence'])):
+                for i in range(len(obj_dict[obj_code]['guidance'])):
                     tmp = copy.deepcopy(obj_dict[obj_code])
-                    tmp['guidence'] = obj_dict[obj_code]['guidence'][i]
+                    tmp['guidance'] = obj_dict[obj_code]['guidance'][i]
                     self.data.append(tmp)
         print(len(self.data))
 
@@ -199,12 +199,12 @@ class TaskDataset_Pose(DgnBase):
         data = self.data[index]
         cate_id = data["cate_id"]
         obj_id = data["obj_id"]
-        if self.guidence_type == "simple":
-            guidence = intend_fun[int(data["action_id"])] + " the " + str(cate_id)
-        elif self.guidence_type == "fine":
-            guidence = data["guidence"]
+        if self.guidance_type == "simple":
+            guidance = intend_fun[int(data["action_id"])] + " the " + str(cate_id)
+        elif self.guidance_type == "fine":
+            guidance = data["guidance"]
         else:
-            raise Exception("No vaild guidence")
+            raise Exception("No vaild guidance")
 
         intend_id = torch.tensor([int(data["action_id"])])-1
         intend_vector = torch.zeros(4)
@@ -237,8 +237,7 @@ class TaskDataset_Pose(DgnBase):
 
         sample = {
             "cate_id": cate_id,
-            "guidence": guidence,
-            "seq_id": data["seq_id"],
+            "guidance": guidance,
             "cls_vector": cls_vector,
             "obj_pc": obj_pc,  # shape: (N, 3)
             "obj_id": obj_id,
@@ -288,6 +287,6 @@ class TaskDataset_Pose(DgnBase):
         return input_dict
     
     def __len__(self,):
-        return len(self.data)//100
+        return len(self.data)
 
     

@@ -29,7 +29,7 @@ class UNetModel(nn.Module):
         self.scene_model = build_backbone(cfg.backbone)
         if hasattr(cfg, "use_hand") and cfg.use_hand:
             self.hand_model = build_backbone(cfg.hand_backbone)
-        if hasattr(cfg, "use_guidence") and cfg.use_guidence:
+        if hasattr(cfg, "use_guidance") and cfg.use_guidance:
             self.language_model = build_backbone(cfg.language_encoder)
 
         time_embed_dim = self.d_model * cfg.time_embed_mult
@@ -158,7 +158,7 @@ class UNetModel(nn.Module):
 
     def condition_language(self, data: Dict) -> torch.Tensor:
 
-        cond_txt, text_vector = self.language_model(data["guidence"], data["clip_data"] if "clip_data" in data else None)
+        cond_txt, text_vector = self.language_model(data["guidance"], data["clip_data"] if "clip_data" in data else None)
         cond_txt_cls = cond_txt[torch.arange(cond_txt.shape[0]), text_vector.argmax(dim=-1)]
 
         return cond_txt_cls, cond_txt

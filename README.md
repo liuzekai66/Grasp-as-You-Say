@@ -2,7 +2,7 @@
 
 ### <p align="center">*Yi-Lin Wei, Jian-Jian Jiang, Chengyi Xing, Xiantuo Tan, Xiao-Ming Wu, Hao Li, <br> Mark Cutkosky, Wei-Shi Zheng*</p>
 
-#### <p align="center">[[Paper]](https://arxiv.org/abs/2405.19291) &nbsp;&nbsp;&nbsp; [[Project]](https://isee-laboratory.github.io/DexGYS/) </p>
+#### <p align="center">[[Paper]](https://arxiv.org/abs/2405.19291) &nbsp;&nbsp;&nbsp; [[Project]](https://isee-laboratory.github.io/DexGYS/) &nbsp;&nbsp;&nbsp; [[Dataset]](https://huggingface.co/datasets/wyl2077/DexGYS/tree/main) </p>
 
 ![-](assets/realword_vis.png)
 ### (NeurIPS 2024) Official repository of paper "Grasp as You Say: Language-guided Dexterous Grasp Generation" 
@@ -36,21 +36,21 @@ cd ../../
 ```
 
 ## Data Preparation
-1. Download dexterous grap label and language label of DexGYS from here ["coming soon"], and put in the "dexgys" in the path of "./data".
+1. Download dexterous grap label and language label of DexGYS from here[https://huggingface.co/datasets/wyl2077/DexGYS], and put in the "dexgys" in the path of "./data".
 
-2. Download ShadowHand model mjcf from [here](https://mirrors.pku.edu.cn/dl-release/UniDexGrasp_CVPR2023/), and put the "mjcf" in the path of "./data".
+2. Download ShadowHand model mjcf from here[https://mirrors.pku.edu.cn/dl-release/UniDexGrasp_CVPR2023/], and put the "mjcf" in the path of "./data".
 
-3. Download 3D mesh of object from [here](https://oakink.net/), and put the "oakink" in the path of "./data".
+3. Download 3D mesh of object from here[https://oakink.net/], and put the "oakink" in the path of "./data".
 
 4. Finally, the directory should as follow:
 ```
 .data/
-├── dexgys/ 
+├── dexgys 
 │ ├── train_with_guide_v2.1.json
-│ ├── test_with_guide_v2.1.json 
-├── oakink/ 
-│ ├── shape/
-└── mjcf/
+│ ├── test_with_guide_v2.1.json
+├── mjcf  
+├── oakink 
+│ ├── shape
 ```
 
 ## Usage
@@ -113,10 +113,32 @@ python ./test.py \
 --override model.checkpoint_path \"<checkpoint-path>\"
 ```
 
+### Visualization
+```
+python scripts/vis/vis.py
+```
+
+### Evaluation
+- Evaluation of FID:
+```
+python scripts/fid/test_fid.py -r \"<match_result-path>\"
+```
+
+- Evaluation of Q1:
+```
+"python scripts/q1/evaluate.py -r \"<raw_result-path>\" --gpus 0 1 2 3 4 5 6 7 
+```
+
+- Evaluation of Diversity:
+```
+python scripts/diversity/calc_diversity.py -r \"<raw_result-path>\"
+```
+
+
 ## TODO
-- [ ] Release the datasets of GraspGYSNet
-- [ ] Release the visualization code of GraspGYS framework
-- [ ] Release the evaluation code of GraspGYS framework
+- [x] Release the datasets of GraspGYSNet
+- [x] Release the visualization code of GraspGYS framework
+- [x] Release the evaluation code of GraspGYS framework
 - [x] Release the training code of GraspGYS framework
 - [x] Release the inference code of GraspGYS framework
 
@@ -128,18 +150,16 @@ The code of this repository is based on the following repositories. We would lik
 
 - [Scene-Diffuser](https://github.com/scenediffuser/Scene-Diffuser)
 
-- [DGTR](https://github.com/iSEE-Laboratory/DGTR)
-
 ## Contact
 - Email: weiylin5@mail2.sysu.edu.cn
 
 ## Citation
 Please cite it if you find this work useful.
 ```
-@article{wei2024grasp,
-  title={Grasp as you say: language-guided dexterous grasp generation},
-  author={Wei, Yi-Lin and Jiang, Jian-Jian and Xing, Chengyi and Tan, Xian-Tuo and Wu, Xiao-Ming and Li, Hao and Cutkosky, Mark and Zheng, Wei-Shi},
-  journal={arXiv preprint arXiv:2405.19291},
-  year={2024}
+@inproceedings{wei2024grasp,
+  title = {Grasp as You Say: Language-guided Dexterous Grasp Generation},
+  author = {Yi-Lin Wei and Jian-Jian Jiang and Chengyi Xing and Xian-Tuo Tan and Xiao-Ming Wu and Hao Li and Mark Cutkosky and Wei-Shi Zheng},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2024}
 }
 ```

@@ -11,7 +11,7 @@ save_top_n: 20
 log_dir: logs
 seed: 3407
 norm_type: &norm_type minmax11
-guidence_type: &guidence_type "fine" # fine
+guidance_type: &guidance_type "fine" # fine
 frozen_clip: False
 
 data:
@@ -20,7 +20,7 @@ data:
     data_root: &data_root "./data/oakink"
     pose_path: ./Experiments/idgc/test_results/epoch_1_train/matched_results.json
     sample_in_pose: &sample_in_pose True
-    guidence_type: *guidence_type
+    guidance_type: *guidance_type
     rotation_type: *rotation_type
     norm_type: *norm_type 
     batch_size: 32
@@ -30,7 +30,7 @@ data:
     data_root: *data_root
     pose_path: ./Experiments/idgc/test_results/epoch_1_test/matched_results.json
     sample_in_pose: True
-    guidence_type: *guidence_type
+    guidance_type: *guidance_type
     rotation_type: *rotation_type
     norm_type: *norm_type 
     batch_size: 32
@@ -54,7 +54,7 @@ model:
     name: unet
     task_num: 0
     cls_dim: 0
-    use_guidence: False
+    use_guidance: False
     use_obj: True
     use_hand: True
     plus_condition_type: ()
