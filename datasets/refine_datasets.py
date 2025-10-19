@@ -155,7 +155,7 @@ class RefineDataset(DgnBase):
         self.sample_in_pose = sample_in_pose
         self.guidance_type = guidance_type
         self._process_data(sample_in_pose)
-
+#这里对应的是我们数据集要替换npz文件信息的地方
     def _process_data(self, sample_in_pose):
         # grasp
         with open(self.pose_path) as f:
