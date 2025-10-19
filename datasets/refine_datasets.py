@@ -213,7 +213,7 @@ class RefineDataset(DgnBase):
         }
 
         return sample
-
+#_get_obj_pc() 的职责这个函数的功能非常单一：给定一个物体 ID (oid)，读取物体网格文件（.obj 或 .ply），把它转换成点云返回
     def _get_obj_pc(self, oid, use_downsample=True, key="align"):
         data_dir = osp.join(self.data_root, "shape")
         obj_suffix_path = "align_ds" if use_downsample else "align"
